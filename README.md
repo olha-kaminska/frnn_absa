@@ -7,13 +7,14 @@ The data for these paper were provided by [SentEmo project](http://www.sentemo.o
 
 ### Repository Overview ###
 - The **code** directory contains .py files with different functions:
-  - *preprocessing.py* - functions for data uploading and preperation;
-  - *embeddings.py* - functions for tweets embeddings with different methods;
+  - *preprocessing.py* - functions for data uploading and preperation and for tweets embeddings;
   - *fuzzy_eval.py* - functions for fuzzy-rough-based approach and cross-validation evaluation;
-  - *pipeline.py* - function to perform pipeline-based solutions.
-- The **data** directory contains *README_data_download.md* file with instruction on uploading necessary dataset files.
-- The **model** directory contains *README_model_download.md* file with instruction on uploading necessary models that should be saved in the *model* folder.
-- The file **Example.ipynb** provides an overview of all function and their usage on the example of Anger dataset. It is built as a pipeline described in the paper with corresponded results. 
+  - *systems.py* - function to perform pipeline-based solutions.
+- The **data** directory contains:
+  - *README_data_download.md* file with instruction on uploading necessary dataset files;
+  - *sentiment_cost.json* file with cost matrix for the sentiment dataset;
+  - *emotion_cost.json* file with cost matrix for the emotion dataset.
+- The file **Example.ipynb** provides an overview of all function and their usage on the example of our dataset. It is built as a pipeline described in the paper with corresponded results. 
 - The file **requirements.txt** contains the list of all necessary packages and versions used with the Python 3.7.4 environment.
 
 ### MDPI link ###
