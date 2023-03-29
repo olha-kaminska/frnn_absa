@@ -1,0 +1,7 @@
+fuzzy_rough_learn==0.0.0
+numpy==1.24.2
+scikit_learn==1.2.2
+tensorflow==2.12.0
+tensorflow_intel==2.11.0
+torch==1.5.0
+~umpy==1.18.1

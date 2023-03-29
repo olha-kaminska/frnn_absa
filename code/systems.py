@@ -1,14 +1,14 @@
 import json
 
-def system_0(train, test, [class_aspect, class_sen, class_emo], [vector_name_asp, vector_name_sen, vector_name_emo], [k_asp, k_sen, k_emo]):
+def system_0(train, test, class_aspect, class_sen, class_emo, vector_name_asp, vector_name_sen, vector_name_emo, k_asp, k_sen, k_emo):
     '''
     This function performs basic system pipeline, where aspect, sentiment, and emotion tasks are performed one after one.
     
     Input: - train: dataframe with train dataset
            - test: dataframe with test dataset
-           - [class_aspect, class_sen, class_emo]: list of strings, which represent name of columns in train (test) dataset with classes that we will use for aspect/sentiment/emotion tasks 
-           - [vector_name_asp, vector_name_sen, vector_name_emo]: list of strings, which represent name of columns in train (test) dataset with feature vectors that we will use for aspect/sentiment/emotion tasks 
-           - [k_asp, k_sen, k_emo]: list of integers, which represents parameter k (a number of neighbours) that we will use for aspect/sentiment/emotion tasks 
+           - class_aspect, class_sen, class_emo: strings, which represent name of columns in train (test) dataset with classes that we will use for aspect/sentiment/emotion tasks 
+           - vector_name_asp, vector_name_sen, vector_name_emo: strings, which represent name of columns in train (test) dataset with feature vectors that we will use for aspect/sentiment/emotion tasks 
+           - k_asp, k_sen, k_emo: integers, which represents parameter k (a number of neighbours) that we will use for aspect/sentiment/emotion tasks 
            
     Output: three lists with predictions for aspect/sentiment/emotion tasks
     '''
@@ -47,15 +47,15 @@ def system_0(train, test, [class_aspect, class_sen, class_emo], [vector_name_asp
     
     return res_asp, list(test_copy['Predicted_sen_label']), list(test_copy['Predicted_emo_label'])
     
-def system_1(train, test, [class_aspect, class_sen, class_emo], [vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg], [k_asp, k_sen, k_emo_pos, k_emo_neg]):
+def system_1(train, test, class_aspect, class_sen, class_emo, vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg, k_asp, k_sen, k_emo_pos, k_emo_neg):
     '''
     This function performs system #1, which is an updated version of system #0, where as class_aspect we should use main aspect classes and for emotions we created two modes: one for positive emotions and one for negative 
     
     Input: - train: dataframe with train dataset
            - test: dataframe with test dataset
-           - [class_aspect, class_sen, class_emo]: list of strings, which represent name of columns in train (test) dataset with classes that we will use for aspect/sentiment/emotion tasks 
-           - [vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg]: list of strings, which represent name of columns in train (test) dataset with feature vectors that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
-           - [k_asp, k_sen, k_emo_pos, k_emo_neg]: list of integers, which represents parameter k (a number of neighbours) that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
+           - class_aspect, class_sen, class_emo: strings, which represent name of columns in train (test) dataset with classes that we will use for aspect/sentiment/emotion tasks 
+           - vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg: strings, which represent name of columns in train (test) dataset with feature vectors that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
+           - k_asp, k_sen, k_emo_pos, k_emo_neg: integers, which represents parameter k (a number of neighbours) that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
            
     Output: three lists with predictions for aspect/sentiment/emotion tasks
     '''
@@ -107,7 +107,7 @@ def system_1(train, test, [class_aspect, class_sen, class_emo], [vector_name_asp
         
     return res_asp, list(test_copy['Predicted_sen_label']), list(test_copy['Predicted_emo_label'])
     
-def system_2(train, test, [class_aspect, class_sen, class_emo], [vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg], [k_asp, k_sen, k_emo_pos, k_emo_neg], ct_pol_path):
+def system_2(train, test, class_aspect, class_sen, class_emo, vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg, k_asp, k_sen, k_emo_pos, k_emo_neg, ct_pol_path):
     '''
     This function performs system #2, which is an updated version of system #1, where for results of sentiment task we perform filtration with a usage of the cost scores. 
     
@@ -115,9 +115,9 @@ def system_2(train, test, [class_aspect, class_sen, class_emo], [vector_name_asp
     
     Input: - train: dataframe with train dataset
            - test: dataframe with test dataset
-           - [class_aspect, class_sen, class_emo]: list of strings, which represent name of columns in train (test) dataset with classes that we will use for aspect/sentiment/emotion tasks 
-           - [vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg]: list of strings, which represent name of columns in train (test) dataset with feature vectors that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
-           - [k_asp, k_sen, k_emo_pos, k_emo_neg]: list of integers, which represents parameter k (a number of neighbours) that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
+           - class_aspect, class_sen, class_emo: strings, which represent name of columns in train (test) dataset with classes that we will use for aspect/sentiment/emotion tasks 
+           - vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg: strings, which represent name of columns in train (test) dataset with feature vectors that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
+           - k_asp, k_sen, k_emo_pos, k_emo_neg: integers, which represents parameter k (a number of neighbours) that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
            - ct_pol_path: string, path to the cost matrix for sentiment classes 
            
     Output: three lists with predictions for aspect/sentiment/emotion tasks
@@ -173,15 +173,15 @@ def system_2(train, test, [class_aspect, class_sen, class_emo], [vector_name_asp
         
     return res_asp, list(test_copy['Predicted_sen_label']), list(test_copy['Predicted_emo_label'])
     
-def system_3(train, test, [class_aspect, class_sen, class_emo], [vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg], [k_asp, k_sen, k_emo_pos, k_emo_neg]):
+def system_3(train, test, class_aspect, class_sen, class_emo, vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg, k_asp, k_sen, k_emo_pos, k_emo_neg):
     '''
     This function performs system #3, which is an updated version of system #1, where for emotions we created two modes: one for positive emotions and one for negative, but all tasks (aspect, sentiment, emotion) are performed separately 
     
     Input: - train: dataframe with train dataset
            - test: dataframe with test dataset
-           - [class_aspect, class_sen, class_emo]: list of strings, which represent name of columns in train (test) dataset with classes that we will use for aspect/sentiment/emotion tasks 
-           - [vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg]: list of strings, which represent name of columns in train (test) dataset with feature vectors that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
-           - [k_asp, k_sen, k_emo_pos, k_emo_neg]: list of integers, which represents parameter k (a number of neighbours) that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
+           - class_aspect, class_sen, class_emo: strings, which represent name of columns in train (test) dataset with classes that we will use for aspect/sentiment/emotion tasks 
+           - vector_name_asp, vector_name_sen, vector_name_emo_pos, vector_name_emo_neg: strings, which represent name of columns in train (test) dataset with feature vectors that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
+           - k_asp, k_sen, k_emo_pos, k_emo_neg: integers, which represents parameter k (a number of neighbours) that we will use for aspect/sentiment/positive emotion/negative emotion tasks 
            
     Output: three lists with predictions for aspect/sentiment/emotion tasks
     '''
@@ -212,4 +212,5 @@ def system_3(train, test, [class_aspect, class_sen, class_emo], [vector_name_asp
         elif i in test_MC_neu.index.to_list():
             test_copy['Predicted_emo_label'][i] = 7
         else: 
+            test_copy['Predicted_emo_label'][i] = 100
     return res_asp, res_sen, list(test_copy['Predicted_emo_label'])

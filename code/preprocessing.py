@@ -22,18 +22,18 @@ def window_3(tokens, indexes):
            - indexes: list of int, that identify the position of targeted term in the token list (these numbers should be <= the lenght o token list)
     Output: - window3: list of strings
     '''
-        window3 = []
-        if indexes[0]-3>0:\
-            start = indexes[0]-3
-        else:
-            start = 0 
-        if indexes[-1]+4<len(tokens):
-            end = indexes[-1]+4
-        else:
-            end = len(tokens)
-        for i in range(start, end):
-            window3.append(tokens[i])
-        return window3
+    window3 = []
+    if indexes[0]-3>0:\
+        start = indexes[0]-3
+    else:
+        start = 0 
+    if indexes[-1]+4<len(tokens):
+        end = indexes[-1]+4
+    else:
+        end = len(tokens)
+    for i in range(start, end):
+        window3.append(tokens[i])
+    return window3
         
 def window_5(tokens, indexes):
     '''
@@ -43,18 +43,18 @@ def window_5(tokens, indexes):
            - indexes: list of int, that identify the position of targeted term in the token list (these numbers should be <= the lenght o token list)
     Output: - window5: list of strings
     '''
-        window5 = []
-        if indexes[0]-5>0:
-            start = indexes[0]-5
-        else:
-            start = 0 
-        if indexes[-1]+6<len(tokens):
-            end = indexes[-1]+6
-        else:
-            end = len(tokens)
-        for i in range(start, end):
-            window5.append(tokens[i])
-        return window5
+    window5 = []
+    if indexes[0]-5>0:
+        start = indexes[0]-5
+    else:
+        start = 0 
+    if indexes[-1]+6<len(tokens):
+        end = indexes[-1]+6
+    else:
+        end = len(tokens)
+    for i in range(start, end):
+        window5.append(tokens[i])
+    return window5
     
 def get_vector_bert(text, tokenizer_bert, model_bert):
     '''
